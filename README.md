@@ -1,4 +1,4 @@
-# portfolio-generator
+# Portfolio-generator
 
 ## Description
 
