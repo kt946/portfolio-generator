@@ -1,14 +1,6 @@
 import inquirer from 'inquirer';
-/*const fs = require('fs');
-const generatePage = require('./src/page-template.js');
-
-const pageHTML = generatePage(name, github);
-
-fs.writeFile('./index.html', pageHTML, err => {
-    if (err) throw err;
-
-    console.log('Portfolio complete! Check out index.html to see the output!');
-});*/
+import  * as fs from 'fs';
+import generatePage from './src/page-template.js';
 
 const promptUser = () => {
     return inquirer.prompt ([
@@ -141,5 +133,11 @@ Add a New Project
 promptUser()
     .then(promptProject)
     .then(portfolioData  => {
-        console.log(portfolioData);
+        const pageHTML = generatePage(portfolioData);
+
+        fs.writeFile('./index.html', pageHTML, err => {
+            if (err) throw new Error(err);
+
+            console.log('Portfolio complete! Check out index.html to see the output!');
+        });
     });
